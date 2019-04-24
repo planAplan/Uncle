@@ -1,0 +1,9 @@
+$bg-color: #fff;
+
+
+
+
+@function bg-img ($url) {
+    @return url($url) no-repeat 100%-100%
+}
+
