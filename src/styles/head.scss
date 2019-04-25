@@ -1,18 +1,2 @@
-@import './variable.scss';
+@import 'variable';
 
-.head {
-  .notification-bar {
-    text-align: center;
-  }
-  .header-container {
-    .logo {
-      &-img {
-        // background: bg-img('../images/logo.png');
-      }
-      &-tools {}
-    }
-    .nav {
-
-    }
-  }
-}
