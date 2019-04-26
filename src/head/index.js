@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import * as Boot from 'react-bootstrap';
 import Lang from '../utils';
 import ControlledCarousel from '../components/carousel';
+import Cardcolumns from '../components/cardcolumns';
 
 let logoSrc = require('../images/logo.png')
 export default class Head extends Component {
@@ -55,7 +56,7 @@ export default class Head extends Component {
                 </Boot.Row>
                 <Boot.Row>
                     <Boot.Col lg={{span: 12}}>
-                        <Boot.Navbar bg="dark" expand="lg" className="Nav">
+                        <Boot.Navbar bg="secondary" expand="lg" className="Nav">
                             <Boot.Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Boot.Navbar.Collapse id="basic-navbar-nav">
                                 <Boot.Nav className="mr-auto">
@@ -78,7 +79,34 @@ export default class Head extends Component {
                         <ControlledCarousel />
                     </Boot.Col>
                 </Boot.Row>
+                <Boot.Row style={{marginTop: '25px'}}>
+                    <Boot.Col>
+                        <Boot.Alert variant="secondary">
+                            <h4>Why Olight Australia?</h4>
+                        </Boot.Alert>
+                    </Boot.Col>
+                </Boot.Row>
+                <Boot.Row style={{marginTop: '25px'}}>
+                    <Boot.Col>
+                        <Boot.Container>
+                            <Boot.Row>
+                                <Boot.Col>
+                                    <Cardcolumns />
+                                </Boot.Col>
+                            </Boot.Row>
+                        </Boot.Container>
+                    </Boot.Col>
+                </Boot.Row>
             </Boot.Container>
         );
     }
 }
+
+/**
+ * 
+                <Boot.Row style={{marginTop: '25px'}}>
+                    <Boot.Col>
+                        
+                    </Boot.Col>
+                </Boot.Row>
+ */
