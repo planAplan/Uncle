@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import * as Boot from 'react-bootstrap';
 import Lang from '../utils';
-import ControlledCarousel from '../components/carousel';
-import Cardcolumns from '../components/cardcolumns';
+
 
 let logoSrc = require('../images/logo.png')
 export default class Head extends Component {
@@ -11,7 +10,7 @@ export default class Head extends Component {
         // this.props.changeLang()
     }
     goHome = () => {
-
+        window.location.href = window.location.origin
     }
     render () {
         return (
@@ -43,7 +42,7 @@ export default class Head extends Component {
                             </Boot.Row>
                             <Boot.Row>
                                 <Boot.Col>
-                                    <Boot.ButtonGroup className="floatR">
+                                    <Boot.ButtonGroup className="float-right">
                                         <Boot.Button variant="link">{Lang('contract')}</Boot.Button>
                                         <Boot.Button variant="link">{Lang('contract')}</Boot.Button>
                                         <Boot.Button variant="link" onClick={this.props.changeLang}>{Lang('language')}</Boot.Button>
@@ -56,12 +55,12 @@ export default class Head extends Component {
                 </Boot.Row>
                 <Boot.Row>
                     <Boot.Col lg={{span: 12}}>
-                        <Boot.Navbar bg="secondary" expand="lg" className="Nav">
+                        <Boot.Navbar expand="lg" className="Nav bg-dark">
                             <Boot.Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Boot.Navbar.Collapse id="basic-navbar-nav">
                                 <Boot.Nav className="mr-auto">
-                                    <Boot.Nav.Link href="#home">{Lang('home')}</Boot.Nav.Link>
-                                    <Boot.Nav.Link href="#link">Link</Boot.Nav.Link>
+                                    <Boot.Nav.Link href="#home" className="text-white">{Lang('home')}</Boot.Nav.Link>
+                                    <Boot.Nav.Link href="#link" className="text-white">Link</Boot.Nav.Link>
                                     <Boot.NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <Boot.NavDropdown.Item href="#action/3.1">Action</Boot.NavDropdown.Item>
                                         <Boot.NavDropdown.Item href="#action/3.2">Another action</Boot.NavDropdown.Item>
@@ -72,29 +71,6 @@ export default class Head extends Component {
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
                         </Boot.Navbar>
-                    </Boot.Col>
-                </Boot.Row>
-                <Boot.Row style={{marginTop: '15px'}}>
-                    <Boot.Col>
-                        <ControlledCarousel />
-                    </Boot.Col>
-                </Boot.Row>
-                <Boot.Row style={{marginTop: '25px'}}>
-                    <Boot.Col>
-                        <Boot.Alert variant="secondary">
-                            <h4>Why Olight Australia?</h4>
-                        </Boot.Alert>
-                    </Boot.Col>
-                </Boot.Row>
-                <Boot.Row style={{marginTop: '25px'}}>
-                    <Boot.Col>
-                        <Boot.Container>
-                            <Boot.Row>
-                                <Boot.Col>
-                                    <Cardcolumns />
-                                </Boot.Col>
-                            </Boot.Row>
-                        </Boot.Container>
                     </Boot.Col>
                 </Boot.Row>
             </Boot.Container>
