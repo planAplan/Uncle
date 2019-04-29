@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Head from './head';
-import Body from './body';
+import getRouter from './body';
 import Foot from './foot';
 import './App.scss';
 
@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="App">
           <Head changeLang={this.changeLang}/>
-          <Body />
+          {getRouter()}
           <Foot />
       </div>
     );

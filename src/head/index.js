@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import * as Boot from 'react-bootstrap';
 import Lang from '../utils';
 
@@ -10,7 +11,7 @@ export default class Head extends Component {
         // this.props.changeLang()
     }
     goHome = () => {
-        window.location.href = window.location.origin
+        window.location.reload()
     }
     render () {
         return (
@@ -55,18 +56,29 @@ export default class Head extends Component {
                 </Boot.Row>
                 <Boot.Row>
                     <Boot.Col lg={{span: 12}}>
-                        <Boot.Navbar expand="lg" className="Nav bg-dark">
+                        <Boot.Navbar expand="lg" className="Nav" bg="dark" variant="dark">
                             <Boot.Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Boot.Navbar.Collapse id="basic-navbar-nav">
                                 <Boot.Nav className="mr-auto">
-                                    <Boot.Nav.Link href="#home" className="text-white">{Lang('home')}</Boot.Nav.Link>
-                                    <Boot.Nav.Link href="#link" className="text-white">Link</Boot.Nav.Link>
+                                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                                        <Link to="/">{Lang('home')}</Link>
+                                    </Boot.Nav.Item>
+                                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                                        <Link to="/link">Link</Link>
+                                    </Boot.Nav.Item>
                                     <Boot.NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                        <Boot.NavDropdown.Item href="#action/3.1">Action</Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Item href="#action/3.2">Another action</Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Item href="#action/3.3">Something</Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Divider />
-                                        <Boot.NavDropdown.Item href="#action/3.4">Separated link</Boot.NavDropdown.Item>
+                                        <Boot.NavDropdown.Item as="li">
+                                            <Link to="/action/3.1">Action</Link>
+                                        </Boot.NavDropdown.Item>
+                                        <Boot.NavDropdown.Item as="li">
+                                            <Link to="/action/3.2">Another action</Link>
+                                        </Boot.NavDropdown.Item>
+                                        <Boot.NavDropdown.Item as="li">
+                                            <Link to="/action/3.3">Something</Link>
+                                        </Boot.NavDropdown.Item>
+                                        <Boot.NavDropdown.Item as="li">
+                                            <Link to="/action/3.4">Separated link</Link>
+                                        </Boot.NavDropdown.Item>
                                     </Boot.NavDropdown>
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
