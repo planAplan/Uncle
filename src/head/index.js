@@ -66,7 +66,21 @@ export default class Head extends Component {
                                     <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
                                         <Link to="/link">Link</Link>
                                     </Boot.Nav.Item>
-                                    <Boot.NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                                        <Boot.OverlayTrigger
+                                            placement="bottom"
+                                            delay={{ show: 250, hide: 400 }}
+                                            overlay={(
+                                                <Boot.ListGroup>
+                                                    <Boot.ListGroup.Item><Link to="/rechargeable/torches">Rechargeable Torches</Link></Boot.ListGroup.Item>
+                                                    <Boot.ListGroup.Item><Link to="/rechargeable/headlamps">Rechargeable Headlamps</Link></Boot.ListGroup.Item>
+                                                </Boot.ListGroup>
+                                            )}
+                                        >
+                                            <span><Link to="/rechargeable">Rechargeable</Link></span>
+                                        </Boot.OverlayTrigger>
+                                    </Boot.Nav.Item>
+                                    {/* <Boot.NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <Boot.NavDropdown.Item as="li">
                                             <Link to="/action/3.1">Action</Link>
                                         </Boot.NavDropdown.Item>
@@ -79,7 +93,7 @@ export default class Head extends Component {
                                         <Boot.NavDropdown.Item as="li">
                                             <Link to="/action/3.4">Separated link</Link>
                                         </Boot.NavDropdown.Item>
-                                    </Boot.NavDropdown>
+                                    </Boot.NavDropdown> */}
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
                         </Boot.Navbar>
