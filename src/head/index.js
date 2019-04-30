@@ -2,9 +2,24 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import * as Boot from 'react-bootstrap';
 import Lang from '../utils';
-
+import Navlistitem from '../components/navListItem';
 
 let logoSrc = require('../images/logo.png')
+const NavList = [
+    {
+        label: {text: 'Rechargeable', link: '/rechargeable'},
+        subLabel: [{text: 'Rechargeable Torches', link: '/rechargeable/torches'}, {text: 'Rechargeable Headlamps', link: '/rechargeable/headlamps'}]
+    },
+    {
+        label: {text: 'Headlamps', link: '/headlamps'},
+        subLabel: [
+            {text: 'Camping & Hiking Headlamps', link: '/headlamps/camping'},
+            {text: 'Headlamps For Hunting', link: '/headlamps/hunting'},
+            {text: 'Running Headlampsg', link: '/headlamps/running'},
+            {text: 'Waterproof Headlamps', link: '/headlamps/waterproof'},
+        ]
+    },
+]
 export default class Head extends Component {
 
     searchBtnhandle = () => {
@@ -56,7 +71,7 @@ export default class Head extends Component {
                 </Boot.Row>
                 <Boot.Row>
                     <Boot.Col lg={{span: 12}}>
-                        <Boot.Navbar expand="lg" className="Nav" bg="dark" variant="dark">
+                        <Boot.Navbar expand="lg" className="Nav" bg="dark" variant="light">
                             <Boot.Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Boot.Navbar.Collapse id="basic-navbar-nav">
                                 <Boot.Nav className="mr-auto">
@@ -66,34 +81,15 @@ export default class Head extends Component {
                                     <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
                                         <Link to="/link">Link</Link>
                                     </Boot.Nav.Item>
-                                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
-                                        <Boot.OverlayTrigger
-                                            placement="bottom"
-                                            delay={{ show: 250, hide: 400 }}
-                                            overlay={(
-                                                <Boot.ListGroup>
-                                                    <Boot.ListGroup.Item><Link to="/rechargeable/torches">Rechargeable Torches</Link></Boot.ListGroup.Item>
-                                                    <Boot.ListGroup.Item><Link to="/rechargeable/headlamps">Rechargeable Headlamps</Link></Boot.ListGroup.Item>
-                                                </Boot.ListGroup>
-                                            )}
-                                        >
-                                            <span><Link to="/rechargeable">Rechargeable</Link></span>
-                                        </Boot.OverlayTrigger>
-                                    </Boot.Nav.Item>
-                                    {/* <Boot.NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                        <Boot.NavDropdown.Item as="li">
-                                            <Link to="/action/3.1">Action</Link>
-                                        </Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Item as="li">
-                                            <Link to="/action/3.2">Another action</Link>
-                                        </Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Item as="li">
-                                            <Link to="/action/3.3">Something</Link>
-                                        </Boot.NavDropdown.Item>
-                                        <Boot.NavDropdown.Item as="li">
-                                            <Link to="/action/3.4">Separated link</Link>
-                                        </Boot.NavDropdown.Item>
-                                    </Boot.NavDropdown> */}
+                                    {
+                                        NavList.map((i, idx) => {
+                                            return (
+                                                <Boot.Nav.Item key={idx} className="text-white d-flex align-items-center p-2">
+                                                    <Navlistitem data={i}/>
+                                                </Boot.Nav.Item>
+                                            )
+                                        })
+                                    }
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
                         </Boot.Navbar>

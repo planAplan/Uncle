@@ -7,10 +7,10 @@ export default class Filterside extends Component {
         open: true
     }
     createItem = (items) => {
-        return items.length && items.map(i => {
+        return items.length && items.map((i, idx) => {
             return (
-                <Boot.ListGroup.Item as="li">
-                    {items.content}
+                <Boot.ListGroup.Item as="li" key={idx}>
+                    {i.content}
                 </Boot.ListGroup.Item>
             );
         })
@@ -32,10 +32,7 @@ export default class Filterside extends Component {
                         <Boot.Collapse in={this.state.open}>
                             <Boot.ListGroup as="ul">
                                 {this.createItem(items)}
-                                <Boot.ListGroup.Item as="li" active>
-                                    Cras justo odio
-                                </Boot.ListGroup.Item>
-                            </Boot.ListGroup>;
+                            </Boot.ListGroup>
                         </Boot.Collapse>
                     </Boot.Col>
                 </Boot.Row>

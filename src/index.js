@@ -10,7 +10,7 @@ import './index.scss';
 
 ReactDOM.render(
     <BrowserRouter
-        basename="./"
+        basename={__dirname}
     >
         <App />
     </BrowserRouter>,
