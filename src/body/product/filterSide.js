@@ -22,12 +22,12 @@ export default class Filterside extends Component {
             <Boot.Container>
                 <Boot.Row style={{marginTop: '25px'}}>
                     <Boot.Col>
-                    <Boot.Button
-                        onClick={() => this.setState({ open: !open })}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={open}
-                        >
-                            {title}
+                        <Boot.Button
+                            onClick={() => this.setState({ open: !open })}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                            >
+                                {title}
                         </Boot.Button>
                         <Boot.Collapse in={this.state.open}>
                             <Boot.ListGroup as="ul">

@@ -21,6 +21,7 @@ class App extends Component {
     } else {
       this.setState({lang: curLang})
     }
+    this.products = require('./data/products.json')
   }
   changeLang = () => {
     let {lang} = this.state
@@ -37,7 +38,7 @@ class App extends Component {
     return (
       <div className="App">
           <Head changeLang={this.changeLang}/>
-          {getRouter()}
+          {getRouter(this.products)}
           <Foot />
       </div>
     );

@@ -1,0 +1,48 @@
+{
+    "products":
+        [
+            {
+                "title":  "Flash Sale",
+                "name": "flash_sale",
+                "subpro": []
+            },
+            {
+                "title":  "Rechargeable",
+                "name": "rechargeable",
+                "subpro": [
+                    {
+                        "title": "Rechargeable Torches",
+                        "name": "rechargeable_torches"
+                    },
+                    {
+                        "title": "Rechargeable Headlamps",
+                        "name": "rechargeable_headlamps"
+                    }
+                ]
+            },
+            {
+                "title":  "Accessories",
+                "name": "accessories",
+                "subpro": [
+                    {
+                        "title": "Torch Batteries",
+                        "name": "torch_batteries",
+                        "subpro": [
+                            {
+                                "title": "18650 Batteries",
+                                "name": "18650_batteries"
+                            },
+                            {
+                                "title": "16340/RCR123A Batteries",
+                                "name": "16340/RCR123A_batteries"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Remote Pressure Switches",
+                        "name": "remote_pressure_switches"
+                    }
+                ]
+            }
+        ]
+}
