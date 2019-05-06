@@ -1,41 +1,44 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import Home from './home';
-import Product from './product';
 
+function getPath (proArr, root, pathArr) {
+    if (proArr.subpro === undefined || !proArr.subpro.length) {
+        let path = root
+        pathArr.push(path)
+        return;
+    }
+    proArr.subpro.forEach((i, idx) => {
+        getPath(i, root + '/' + i.name, pathArr)
+    })
+}
 
+function createRoute (products) {
+    console.log(products);
+    let pathArr = []
+    products.map(i => {
+        let root = `/${i.name}`
+        pathArr.push(root)
+        return getPath(i, root, pathArr)
+    })
+    console.log(pathArr);
+    let routes = pathArr.length && pathArr.map((item, idx) => {
+        return (
+            <Route key={idx} exact path={item} render={(props) => {
+                return (React.createElement('div', {props: props}, `${props.match.path}`))
+            }}/>
+        );
+    })
+    return routes
+}
 
 const getRouter = (products) => {
+    let routes = createRoute(products)
+    routes.unshift(<Route key="home" exact path="/" component={Home}/>)
+    routes.push(<Redirect key="redirect" to="/" />)
     return (
         <Switch>
-            <Route exact path="/" component={Home}/>
-            {
-                products.length && products.map((item, idx) => {
-                    console.log(`/${item.name}(/:type)`);
-                    return (
-                        <Route key={idx} exact path={`/${item.name}(/:type)`} render={(props) => {
-                            return (React.createElement('div', {props: props}, `${props.match.path}`))
-                        }}/>
-                    );
-                })
-            }
-            {/* <Route exact path="/link" render={(props) => {
-                console.log(props);
-                return <Product {...props}/>
-            }} />
-            <Route exact path="/rechargeable" render={(props) => {
-                return (React.createElement('div', {props: props}, `${props.match.path}`))
-            }}/>
-            <Route exact path="/rechargeable/:type" render={(props) => {
-                return (React.createElement('div', {props: props}, `${props.match.params.type}`))
-            }}/>
-            <Route exact path="/headlamps" render={(props) => {
-                return (React.createElement('div', {props: props}, `${props.match.path}`))
-            }}/>
-            <Route exact path="/headlamps/:type" render={(props) => {
-                return (React.createElement('div', {props: props}, `${props.match.params.type}`))
-            }}/> */}
-            <Redirect to="/" />
+            {routes}
         </Switch>
     );
 }

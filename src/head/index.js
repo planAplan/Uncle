@@ -8,15 +8,15 @@ let logoSrc = require('../images/logo.png')
 const NavList = [
     {
         label: {text: 'Rechargeable', link: '/rechargeable'},
-        subLabel: [{text: 'Rechargeable Torches', link: '/rechargeable/torches'}, {text: 'Rechargeable Headlamps', link: '/rechargeable/headlamps'}]
+        subLabel: [{text: 'Rechargeable Torches', link: '/rechargeable/rechargeable_torches'}, {text: 'Rechargeable Headlamps', link: '/rechargeable/rechargeable_headlamps'}]
     },
     {
-        label: {text: 'Headlamps', link: '/headlamps'},
+        label: {text: 'accessories', link: '/accessories'},
         subLabel: [
-            {text: 'Camping & Hiking Headlamps', link: '/headlamps/camping'},
-            {text: 'Headlamps For Hunting', link: '/headlamps/hunting'},
-            {text: 'Running Headlampsg', link: '/headlamps/running'},
-            {text: 'Waterproof Headlamps', link: '/headlamps/waterproof'},
+            {text: 'Camping & Hiking Headlamps', link: '/accessories/camping'},
+            {text: 'Headlamps For Hunting', link: '/accessories/hunting'},
+            {text: 'Running Headlampsg', link: '/accessories/running'},
+            {text: 'Waterproof Headlamps', link: '/accessories/waterproof'},
         ]
     },
 ]
@@ -79,7 +79,7 @@ export default class Head extends Component {
                                         <Link to="/">{Lang('home')}</Link>
                                     </Boot.Nav.Item>
                                     <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
-                                        <Link to="/link">Link</Link>
+                                        <Link to="/flash_sale">Flash Sale</Link>
                                     </Boot.Nav.Item>
                                     {
                                         NavList.map((i, idx) => {
