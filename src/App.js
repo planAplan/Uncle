@@ -3,6 +3,8 @@ import Head from './head';
 import getRouter from './body';
 import Foot from './foot';
 import './App.scss';
+import $ from 'jquery';
+
 
 const DEFAULT_LANG = 'EN';
 
@@ -22,6 +24,19 @@ class App extends Component {
       this.setState({lang: curLang})
     }
     this.products = require('./data/products.json').products
+    $.ajax({
+      url: './server/server.php',
+      type: 'get',
+      async: true,
+      data: {name: 'products_summarize'},
+      dataType: 'json',
+      success: (rsp) => {
+        console.log(rsp);
+      },
+      error: (err) => {
+        console.log('err: ', err);
+      }
+    })
   }
   changeLang = () => {
     let {lang} = this.state

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as Boot from 'react-bootstrap';
-import Lang from '../../utils';
+// import Lang from '../../utils';
 import Filterside from './filterSide';
 
 

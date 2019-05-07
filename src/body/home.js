@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as Boot from 'react-bootstrap';
-import Lang from '../utils';
+// import Lang from '../utils';
 import ControlledCarousel from '../components/carousel';
 import Cardcolumns from '../components/cardColumns';
 import Photowall from '../components/photoWall';

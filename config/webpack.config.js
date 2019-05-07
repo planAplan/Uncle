@@ -139,6 +139,7 @@ module.exports = function(webpackEnv) {
         require.resolve('react-dev-utils/webpackHotDevClient'),
       // Finally, this is your app's code:
       paths.appIndexJs,
+      paths.appServer
       // We include the app code last so that if there is a runtime error during
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
@@ -452,13 +453,21 @@ module.exports = function(webpackEnv) {
             // that fall through the other loaders.
             {
               loader: require.resolve('file-loader'),
+              test: /\.php$/,
               // Exclude `js` files to keep "css" loader working as it injects
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
-                name: 'static/media/[name].[hash:8].[ext]',
+                // name: (file) => {
+                //   if (file.extname === 'php') {
+                //     return 'server/[name].[ext]'
+                //   } else {
+                //     return 'static/media/[name].[hash:8].[ext]'
+                //   }
+                // }
+                name: 'server/[name].[ext]',
               },
             },
             // ** STOP ** Are you adding a new loader?
