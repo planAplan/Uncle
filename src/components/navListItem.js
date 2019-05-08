@@ -13,7 +13,7 @@ export default class Navlistitem extends Component {
     }
     render() {
       const { show, target } = this.state;
-      const {label, subLabel} = this.props.data;
+      const {title, link, subpro} = this.props.data;
       return (
         <span>
           <Boot.Button
@@ -24,7 +24,7 @@ export default class Navlistitem extends Component {
             onMouseEnter={() => this.setState({ show: true })}
             onMouseLeave={() => this.setState({ show: false })}
           >
-            <Link to={label.link}>{label.text}</Link>
+            <Link to={link}>{title}</Link>
           </Boot.Button>
           <Boot.Overlay target={target} show={show} placement="bottom-start">
             {({ placement, scheduleUpdate, arrowProps, ...props }) => (
@@ -36,7 +36,7 @@ export default class Navlistitem extends Component {
                 placement="bottom-start"
                 bsPrefix="own-tooltip"
                 >
-                {subLabel.map((i, idx) => {
+                {subpro.map((i, idx) => {
                     return (
                         <li
                             key={idx}
@@ -45,7 +45,7 @@ export default class Navlistitem extends Component {
                             onMouseEnter={() => this.setState({ show: true })}
                             onMouseLeave={() => this.setState({ show: false })}
                             >
-                                <Link to={i.link}>{i.text}</Link>
+                                <Link to={i.link}>{i.title}</Link>
                             </li>
                     );
                 })}

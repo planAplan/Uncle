@@ -2,23 +2,21 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import Home from './home';
 
-function getPath (proArr, root, pathArr) {
-    if (proArr.subpro === undefined || !proArr.subpro.length) {
-        pathArr.add(root)
+function getPath (i, pathArr) {
+    pathArr.add(i.link)
+    if (!i.subpro.length) {
         return;
     }
-    pathArr.add(root)
-    proArr.subpro.forEach((i, idx) => {
-        getPath(i, root + '/' + i.name, pathArr)
+    i.subpro.forEach(i => {
+        getPath(i, pathArr)
     })
 }
 
 function createRoute (products) {
-    console.log(products);
+    if (!products) return [];
     let pathArr = new Set()
-    products.map(i => {
-        let root = `/${i.name}`
-        return getPath(i, root, pathArr)
+    products.forEach(i => {
+        return getPath(i, pathArr)
     })
     console.log(pathArr);
     let routes = []

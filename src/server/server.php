@@ -9,7 +9,7 @@ if(empty($q)) {
 }
 $servername = "xdm473700129.my3w.com";
 $username = "xdm473700129";
-$password = "20180707z";
+$password = "20180707.ZY";
 $dbname = "xdm473700129_db";
 
 $con = mysqli_connect($servername, $username, $password);

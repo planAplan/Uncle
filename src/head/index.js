@@ -21,12 +21,35 @@ const NavList = [
     },
 ]
 export default class Head extends Component {
+    state = {
+        products: this.props.products
+    }
+    componentWillMount () {
 
+    }
     searchBtnhandle = () => {
         // this.props.changeLang()
     }
     goHome = () => {
         window.location.reload()
+    }
+    createNavItem = (products = []) => {
+        if (!products.length) return products;
+        return products.map((i, idx) => {
+            if (!i.subpro.length) { //单层nav
+                return (
+                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                        <Link to={i.link}>{i.title}</Link>
+                    </Boot.Nav.Item>
+                );
+            } else { //多层
+                return (
+                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                        <Navlistitem data={i}/>
+                    </Boot.Nav.Item>
+                );
+            }
+        })
     }
     render () {
         return (
@@ -78,7 +101,10 @@ export default class Head extends Component {
                                     <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
                                         <Link to="/">{Lang('home')}</Link>
                                     </Boot.Nav.Item>
-                                    <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
+                                    {
+                                        this.createNavItem(this.props.products)
+                                    }
+                                    {/* <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
                                         <Link to="/flash_sale">Flash Sale</Link>
                                     </Boot.Nav.Item>
                                     {
@@ -89,7 +115,7 @@ export default class Head extends Component {
                                                 </Boot.Nav.Item>
                                             )
                                         })
-                                    }
+                                    } */}
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
                         </Boot.Navbar>

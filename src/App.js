@@ -13,7 +13,8 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      lang: DEFAULT_LANG
+      lang: DEFAULT_LANG,
+      products: undefined
     }
   }
   componentWillMount = () => {
@@ -23,7 +24,7 @@ class App extends Component {
     } else {
       this.setState({lang: curLang})
     }
-    this.products = require('./data/products.json').products
+    // this.products = require('./data/products.json').products
     $.ajax({
       url: './server/server.php',
       type: 'get',
@@ -31,11 +32,28 @@ class App extends Component {
       data: {name: 'products_summarize'},
       dataType: 'json',
       success: (rsp) => {
+        if (rsp.length) {
+          rsp.forEach(i => {
+            this.disposalData(i)
+          })
+        }
         console.log(rsp);
+        this.setState({
+          products: rsp
+        })
       },
       error: (err) => {
         console.log('err: ', err);
       }
+    })
+  }
+  disposalData = (data, root) => {
+    data.link = !root ? '/' + data.name : root + '/' + data.name;
+    if (!data.subpro.length) {
+      return;
+    }
+    data.subpro.forEach(i => {
+      this.disposalData(i, data.link);
     })
   }
   changeLang = () => {
@@ -50,10 +68,11 @@ class App extends Component {
     this.forceUpdate()
   }
   render() {
-    let router = getRouter(this.products)
+    let {products} = this.state;
+    let router = getRouter(products)
     return (
       <div className="App">
-          <Head changeLang={this.changeLang}/>
+          <Head changeLang={this.changeLang} products={products}/>
           {router}
           <Foot />
       </div>
