@@ -7,10 +7,19 @@ if(empty($q)) {
     }
     exit;
 }
-$servername = "xdm473700129.my3w.com";
-$username = "xdm473700129";
+
+//dev
+$servername = "127.0.0.1";
+$username = "root";
 $password = "20180707.ZY";
-$dbname = "xdm473700129_db";
+$dbname = "test";
+
+
+
+// $servername = "xdm473700129.my3w.com";
+// $username = "xdm473700129";
+// $password = "20180707.ZY";
+// $dbname = "xdm473700129_db";
 
 $con = mysqli_connect($servername, $username, $password);
 if (!$con)
@@ -22,7 +31,7 @@ mysqli_select_db($con, $dbname);
 // 设置编码，防止中文乱码
 mysqli_set_charset($con, "utf8");
 
-function query ($tablename, $con, &$arr) {
+function query ($tablename, &$con, &$arr) {
     $sql = "SELECT * FROM $tablename";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($result)) {
@@ -47,9 +56,10 @@ query($q, $con, $resultArr);
 foreach($resultArr as &$res) {
     deep_query($res, $con);
 }
-// deep_query($q, $resultArr, $con);
-// var_dump($resultArr);
 echo json_encode($resultArr);
+
+
+
 // $resultArr = array();
 // while ($row = mysqli_fetch_array($result)) {
 //     array_push($resultArr, $row);

@@ -104,18 +104,6 @@ export default class Head extends Component {
                                     {
                                         this.createNavItem(this.props.products)
                                     }
-                                    {/* <Boot.Nav.Item className="text-white d-flex align-items-center p-2">
-                                        <Link to="/flash_sale">Flash Sale</Link>
-                                    </Boot.Nav.Item>
-                                    {
-                                        NavList.map((i, idx) => {
-                                            return (
-                                                <Boot.Nav.Item key={idx} className="text-white d-flex align-items-center p-2">
-                                                    <Navlistitem data={i}/>
-                                                </Boot.Nav.Item>
-                                            )
-                                        })
-                                    } */}
                                 </Boot.Nav>
                             </Boot.Navbar.Collapse>
                         </Boot.Navbar>
