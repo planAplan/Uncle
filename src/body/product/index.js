@@ -19,6 +19,8 @@ export default class Product extends Component {
         ]
     }
     render () {
+        console.log(this.props);
+        console.log(this.props.match.path.split('/'))
         return (
             <Boot.Container>
                 <Boot.Row style={{marginTop: '25px'}}>

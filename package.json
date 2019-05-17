@@ -61,7 +61,7 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "cp": "cp -r src/server build",
+    "cp": "sudo cp -r src/server build",
     "start": "npm run cp && node scripts/start.js",
     "build": "node scripts/build.js && npm run cp ",
     "server": "sudo rm -rf /Library/WebServer/Documents/* && sudo cp -r ./build/* /Library/WebServer/Documents",

@@ -24,7 +24,6 @@ class App extends Component {
     } else {
       this.setState({lang: curLang})
     }
-    // this.products = require('./data/products.json').products
     $.ajax({
       url: './server/server.php',
       type: 'get',

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import Home from './home';
+import Product from './product'
 
 function getPath (i, pathArr) {
     pathArr.add(i.link)
@@ -22,9 +23,7 @@ function createRoute (products) {
     let routes = []
     pathArr.size && pathArr.forEach((item, idx) => {
         routes.push(
-            <Route key={idx} exact path={item} render={(props) => {
-                return (React.createElement('div', {props: props}, `${props.match.path}`))
-            }}/>
+            <Route key={idx} exact path={item} component={Product}/>
         );
     })
     return routes
